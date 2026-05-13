@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Impossible Travel Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #111;
+            color: white;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #444;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #222;
+        }
+
+        tr:nth-child(even) {
+            background: #1b1b1b;
+        }
+
+        .critical {
+            color: red;
+            font-weight: bold;
+        }
+
+        .high {
+            color: orange;
+        }
+
+        .medium {
+            color: yellow;
+        }
+
+        .low {
+            color: lightgreen;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Impossible Travel Alerts Dashboard</h1>
+
+    <table>
+
+        <tr>
+            <th>User</th>
+            <th>Previous IP</th>
+            <th>Current IP</th>
+            <th>Speed</th>
+            <th>Risk Score</th>
+            <th>Severity</th>
+        </tr>
+
+        {% for alert in alerts %}
+
+        <tr>
+            <td>{{ alert[0] }}</td>
+            <td>{{ alert[1] }}</td>
+            <td>{{ alert[2] }}</td>
+            <td>{{ "%.2f"|format(alert[3]) }} km/h</td>
+            <td>{{ alert[4] }}</td>
+
+            <td class="{{ alert[5].lower() }}">
+                {{ alert[5] }}
+            </td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</body>
+</html>

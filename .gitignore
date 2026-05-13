@@ -1,0 +1,8 @@
+venv/
+__pycache__/
+*.pyc
+*.db
+geo_cache.json
+databse/*.db
+output/alerts.json
+output/alerts.csv
